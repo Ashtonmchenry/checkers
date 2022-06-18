@@ -177,6 +177,9 @@ class Checker(TwoPlayerGame):
         ------
         """
         pass
+        
+        pos = self.possible_moves()
+
 
     def lose(self):
         """
@@ -184,12 +187,25 @@ class Checker(TwoPlayerGame):
         white lose if black piece is in black territory
         """
         pass
+        for (i,j) in self.black_territory:
+            if (self.black_territory == 'W'):
+                self.is_over()
 
+            else:
+                for (i,j) in self.white_territory:
+                    if (self.white_territory == 'B'):
+                        self.is_over()
+        
+        
     def is_over(self):
         """
         game is over immediately when one player get one of its piece into opponent's territory.
         """
         pass
+        self.scoring()
+        return
+        
+
 
     def show(self):
         """
@@ -212,6 +228,14 @@ class Checker(TwoPlayerGame):
        lose = -100
        """
        pass
+       for (i,j) in self.black_territory:
+            if (self.black_territory == 'W'):
+                print('White wins!')
+                
+            else:
+                print('Black wins!')
+       
+
 
 if __name__ == "__main__":
     ai = Negamax(1) # The AI will think 13 moves in advance
